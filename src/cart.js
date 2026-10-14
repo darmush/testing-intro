@@ -15,7 +15,18 @@ function addToCart(cart, product, quantity) {
   }
   return cart
 }
-function changeQuantity() { return notImplemented(); }
+
+function changeQuantity(cart, id, quantity) {
+  const productInCart = cart.find(el => el.id === id)
+
+  if (!productInCart) return cart
+  if (quantity <= 0) throw new RangeError('Недопустимое количество');
+  if (quantity > productInCart.stock) throw new RangeError('Недопустимое количество');
+
+  productInCart.quantity = quantity
+  return cart
+}
+
 function removeFromCart() { return notImplemented(); }
 function calculateCartSubtotal() { return notImplemented(); }
 function calculateOrderTotal() { return notImplemented(); }
