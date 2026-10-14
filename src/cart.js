@@ -27,7 +27,13 @@ function changeQuantity(cart, id, quantity) {
   return cart
 }
 
-function removeFromCart() { return notImplemented(); }
+function removeFromCart(cart, id) {
+  if (!cart.find(el => el.id === id)) return cart
+
+  cart = cart.filter(el => el.id !== id)
+  return cart
+}
+
 function calculateCartSubtotal() { return notImplemented(); }
 function calculateOrderTotal() { return notImplemented(); }
 
